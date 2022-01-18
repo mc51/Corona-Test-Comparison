@@ -20,12 +20,10 @@
     $('#data').DataTable({
       ajax: '/api/data',
       columns: [
-        {% autoescape false %}
         {% for item in table_config %}
-        { data: '{{ item.name }}', orderable: {{ item.orderable }}, searchable: {{ item.searchable }} }
+        { data: '{{ item.name | safe}}', orderable: {{ item.orderable }}, searchable: {{ item.searchable }} }
     {{- ", " if not loop.last else "" -}}
   {% endfor %}
-  {% endautoescape %}
       ],
     });
   });
