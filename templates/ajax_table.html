@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table id="data" class="table table-striped">
+  <thead>
+    <tr>
+      {% for item in table_config -%}
+      <th>{{ item.name }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready(function () {
+    $('#data').DataTable({
+      ajax: '/api/data',
+      columns: [
+        {% autoescape false %}
+        {% for item in table_config %}
+        { data: '{{ item.name }}', orderable: {{ item.orderable }}, searchable: {{ item.searchable }} }
+    {{- ", " if not loop.last else "" -}}
+  {% endfor %}
+  {% endautoescape %}
+      ],
+    });
+  });
+</script>
+{% endblock %}
