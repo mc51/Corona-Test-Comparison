@@ -10,9 +10,11 @@ Before running, execute to resolve dependencies:
 pip install -r requirements.txt
 ```
 
-`01_download_and_convert_data.py` downloads the latest `.pdf` file from Paul Ehrlich Institut and writes it do disk. Then, it attempts to extract the tables and writes them to a `.csv` file.  
+`download_and_convert_data.py` downloads the latest `.pdf` file from Paul Ehrlich Institut and writes it do disk. Then, it attempts to extract the tables and writes them to a `.csv` file.  
 
-`02_serve.py` reads the `.csv` table as a DataFrame. Following, it serves it using Flask. The website uses DataTables with a Bootstrap v5 template to display the data and make it searchable and sortable.  
+`app.py` reads the `.csv` table as a DataFrame. Following, it serves it using Flask. The website uses DataTables with a Bootstrap v5 template to display the data and make it searchable and sortable.  
+
+`wsgi.py` can be used as an entrypoint to serve via uwsgi. See also `corona.ini` for a template uwsgi config file.  
 
 
 ## Resources
