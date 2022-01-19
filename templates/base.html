@@ -4,16 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ title }}</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/datatables.min.css" />
 </head>
 
 <body>
   <div class="container">
     <h1>{{ title }}</h1>
-    <hr>
-    {% block content %}{% endblock %}
+    <p style="color:gray; font-size: medium">{{ subtitle }}</h5>
+      <hr>
+      {% block content %}{% endblock %}
   </div>
 
   <div class="container">
@@ -28,24 +31,24 @@
       <a
         href="https://www.pei.de/SharedDocs/Downloads/DE/newsroom/dossiers/evaluierung-sensitivitaet-sars-cov-2-antigentests.pdf">
         here
-      </a>. This website is <a href="https://github.com/mc51/Corona-Test-Comparison">open-source on GitHub</a>.
+      </a>. The code and data for this is open source and available on <a
+        href="https://github.com/mc51/Corona-Test-Comparison">GitHub</a>.
+
     </p>
   </div>
-
   <br>
   <center>
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
         style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed
     under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
       International License</a>.
+    <br><br>
+    <p style="color:grey; font-size: small">Site version: {{ version }}</p>
   </center>
   <br>
-
-  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" charset="utf8"
-    src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" charset="utf8"
-    src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>
   {% block scripts %}{% endblock %}
 </body>
 

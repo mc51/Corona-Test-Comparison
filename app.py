@@ -1,8 +1,11 @@
+#%%
 import json
 import glob
 import logging
 import sys
+import dateparser
 import pandas as pd
+from pathlib import Path
 from flask import Flask, render_template
 
 logging.basicConfig()
@@ -11,6 +14,7 @@ log.setLevel(logging.INFO)
 
 app = Flask(__name__)
 
+VERSION = "v0.1.0"
 DIR_DATA = "./data"
 DIR_DATA_FINAL = DIR_DATA + "/final"
 
@@ -19,16 +23,17 @@ DIR_DATA_FINAL = DIR_DATA + "/final"
 try:
     file = sorted(glob.glob(f"{DIR_DATA_FINAL}/*.csv"), reverse=True)[0]
 except IndexError:
-    log.exception(f"Make sure there is a .csv file in {DIR_DATA_FINAL}/")
+    log.exception(f"\nMake sure there is a .csv file in {DIR_DATA_FINAL}/\n")
     sys.exit(1)
-
 df = pd.read_csv(file)
 
-# %%
+DATE = dateparser.parse(Path(file).name[0:10]).date()
 TITLE = "Covid-19 Antigen Test Comparison"
-# will be unsed in the template to config DataTables
-COL = df.columns
+SUBTITLE = f"Data last updated on: {DATE}"
 
+#%%
+
+COL = df.columns
 DATATABLES_CONFIG = [
     {"name": COL[0], "searchable": "false", "orderable": "false"},
     {"name": COL[1], "searchable": "false", "orderable": "false"},
@@ -48,7 +53,9 @@ def index():
     return render_template(
         "ajax_table.html",
         title=TITLE,
+        subtitle=SUBTITLE,
         table_config=DATATABLES_CONFIG,
+        version=VERSION,
     )
 
 
