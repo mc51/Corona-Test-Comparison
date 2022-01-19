@@ -1,9 +1,9 @@
-#%%
 import json
 import glob
 import logging
 import sys
 import dateparser
+import subprocess
 import pandas as pd
 from pathlib import Path
 from flask import Flask, render_template
@@ -19,7 +19,7 @@ DIR_DATA = "./data"
 DIR_DATA_FINAL = DIR_DATA + "/final"
 
 
-# Read most current file (use date as prefix)
+# Read most current file (use date as filename prefix)
 try:
     file = sorted(glob.glob(f"{DIR_DATA_FINAL}/*.csv"), reverse=True)[0]
 except IndexError:
@@ -29,7 +29,8 @@ df = pd.read_csv(file)
 
 DATE = dateparser.parse(Path(file).name[0:10]).date()
 TITLE = "Covid-19 Antigen Test Comparison"
-SUBTITLE = f"Data last updated on: {DATE}"
+SUBTITLE = f"Data last updated on: {DATE}" if DATE else ""
+
 
 #%%
 
