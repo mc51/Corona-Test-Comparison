@@ -4,6 +4,7 @@ import logging
 import sys
 import dateparser
 import subprocess
+import typing
 import pandas as pd
 from pathlib import Path
 from flask import Flask, render_template
@@ -14,7 +15,19 @@ log.setLevel(logging.INFO)
 
 app = Flask(__name__)
 
-VERSION = "v0.1.0"
+
+def get_version() -> str:
+    """get latest version from git tag"""
+    try:
+        r = subprocess.check_output(
+            ["git", "describe", "--tags", "--abbrev=0"], encoding="utf8"
+        )
+    except subprocess.CalledProcessError:
+        return ""
+    return r
+
+
+VERSION = get_version()
 DIR_DATA = "./data"
 DIR_DATA_FINAL = DIR_DATA + "/final"
 
@@ -31,8 +44,6 @@ DATE = dateparser.parse(Path(file).name[0:10]).date()
 TITLE = "Covid-19 Antigen Test Comparison"
 SUBTITLE = f"Data last updated on: {DATE}" if DATE else ""
 
-
-#%%
 
 COL = df.columns
 DATATABLES_CONFIG = [
