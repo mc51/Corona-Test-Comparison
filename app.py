@@ -1,12 +1,24 @@
-#%%
 import json
 import glob
+import logging
 import pandas as pd
 from flask import Flask, render_template
 
+logging.basicConfig()
+log = logging.getLogger(__name__)
+log.setLevel(logging.INFO)
+
 app = Flask(__name__)
+
+DIR_DATA = "./data"
+DIR_DATA_FINAL = DIR_DATA + "/final"
+
+
 # Read most current file (use date as prefix)
-file = sorted(glob.glob("./data/final/*.csv"), reverse=True)[0]
+try:
+    file = sorted(glob.glob(f"{DIR_DATA_FINAL}/*.csv"), reverse=True)[0]
+except IndexError:
+    log.exception(f"Make sure there is a .csv file in {DIR_DATA_FINAL}/")
 df = pd.read_csv(file)
 
 # %%
@@ -26,8 +38,6 @@ DATATABLES_CONFIG = [
     {"name": COL[8], "searchable": "false", "orderable": "true"},
     {"name": COL[9], "searchable": "false", "orderable": "true"},
 ]
-
-#%%
 
 
 @app.route("/")
