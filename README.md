@@ -2,8 +2,8 @@
 
 Code for deploying https://corona.pw. A website that displays data for comparing the effectiveness of Corona Antigen Tests for quick search and comparisons.
 
-PyPDF2 + Camelot for extracting data.  
-Flask + DataTables to serve website.  
+PyPDF2 + Camelot for extracting data from the messy `.pdf`.  
+Flask + DataTables to serve website with a clean front-end.  
 
 Before running, execute to resolve dependencies: 
 ```
