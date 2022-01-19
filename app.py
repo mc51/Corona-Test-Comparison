@@ -1,6 +1,7 @@
 import json
 import glob
 import logging
+import sys
 import pandas as pd
 from flask import Flask, render_template
 
@@ -19,6 +20,8 @@ try:
     file = sorted(glob.glob(f"{DIR_DATA_FINAL}/*.csv"), reverse=True)[0]
 except IndexError:
     log.exception(f"Make sure there is a .csv file in {DIR_DATA_FINAL}/")
+    sys.exit(1)
+
 df = pd.read_csv(file)
 
 # %%
