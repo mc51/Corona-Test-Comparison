@@ -4,7 +4,6 @@ import logging
 import sys
 import dateparser
 import subprocess
-import typing
 import pandas as pd
 from pathlib import Path
 from flask import Flask, render_template
@@ -43,7 +42,6 @@ df = pd.read_csv(file)
 DATE = dateparser.parse(Path(file).name[0:10]).date()
 TITLE = "Covid-19 Antigen Test Comparison"
 SUBTITLE = f"Data last updated on: {DATE}" if DATE else ""
-
 
 COL = df.columns
 DATATABLES_CONFIG = [

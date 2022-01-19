@@ -8,15 +8,15 @@
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css"
-    href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/datatables.min.css" />
+    href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.3/b-2.2.1/b-colvis-2.2.1/b-html5-2.2.1/datatables.min.css" />
 </head>
 
 <body>
   <div class="container">
     <h1>{{ title }}</h1>
-    <p style="color:gray; font-size: medium">{{ subtitle }}</h5>
-      <hr>
-      {% block content %}{% endblock %}
+    <p style="color:gray; font-size: medium">{{ subtitle }}</p>
+    <hr>
+    {% block content %}{% endblock %}
   </div>
 
   <div class="container">
@@ -48,7 +48,8 @@
   <br>
   <script type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.3/b-2.2.1/b-colvis-2.2.1/b-html5-2.2.1/datatables.min.js"></script>
   {% block scripts %}{% endblock %}
 </body>
 

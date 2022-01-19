@@ -1,25 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="table-responsive">
-  <table id="data" class="table table-striped table-hover">
-    <thead>
-      <tr>
-        {% for item in table_config -%}
-        <th>{{ item.name }}</th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-</div>
+<!-- <div class="table-responsive"> -->
+<table id="data" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      {% for item in table_config -%}
+      <th>{{ item.name }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<!-- </div> -->
 {% endblock %}
 
 {% block scripts %}
 <script>
   $(document).ready(function () {
-    $('#data').DataTable({
+    var table = $('#data').DataTable({
+      "initComplete": function () {
+        table.buttons().container()
+          .appendTo('#data_wrapper .col-md-6:eq(0)');
+        $("#data").show();
+      },
+      "columnDefs": [
+        { "visible": false, "targets": [0, 1, 2] } // hide first three cols
+      ],
+      "order": [[3, "asc"]],
+      buttons: ['colvis', 'csv', 'excel'],
       ajax: '/api/data',
       columns: [
         {% for item in table_config %}
@@ -28,6 +38,7 @@
   {% endfor %}
       ],
     });
+
   });
 </script>
 {% endblock %}
