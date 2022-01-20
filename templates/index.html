@@ -1,32 +1,43 @@
 {% extends "base.html" %}
 
+{% block title %}
+<br>
+<h2>{{ title }}</h2>
+<p style="color:gray; font-size: medium">{{ subtitle }}</p>
+<hr>
+{% endblock %}
+
 {% block content %}
-<!-- <div class="table-responsive"> -->
 <table id="data" class="table table-striped table-hover">
   <thead>
     <tr>
+      <th colspan="6" style="border-width: 0;"></th>
+      <th colspan="4">Sensitivity for</th>
+    </tr>
+
+    <tr>
       {% for item in table_config -%}
-      <th>{{ item.name }}</th>
+      <th><span title="{{ item.span | safe }}">{{ item.name | safe }}</span></th>
       {% endfor %}
     </tr>
   </thead>
   <tbody>
   </tbody>
 </table>
-<!-- </div> -->
 {% endblock %}
 
 {% block scripts %}
 <script>
   $(document).ready(function () {
     var table = $('#data').DataTable({
+      responsive: true,
       "initComplete": function () {
         table.buttons().container()
           .appendTo('#data_wrapper .col-md-6:eq(0)');
         $("#data").show();
       },
       "columnDefs": [
-        { "visible": false, "targets": [0, 1, 2] } // hide first three cols
+        { "visible": false, "targets": [0, 1, 2, 5, 8] } // hide first three cols
       ],
       "order": [[3, "asc"]],
       buttons: ['colvis', 'csv', 'excel'],
@@ -38,7 +49,6 @@
   {% endfor %}
       ],
     });
-
   });
 </script>
 {% endblock %}

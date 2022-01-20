@@ -3,53 +3,39 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>{{ title }}</title>
+  <title>Corona Antigen Test Comparison</title>
+
+  <meta name="description"
+    content="Which Corona Antigen Tests can be trusted? Find out by comparing them based on scientific data." />
+  <!-- Open Graph tags -->
+  <meta property="og:site_name" content="Corona Antigen Test Comparison" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Corona Antigen Test Comparison" />
+  <meta property="og:url" content="." />
+  <meta property="og:description"
+    content="Which Corona Antigen Tests can be trusted? Find out by comparing them based on scientific data." />
 
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css"
     href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.3/b-2.2.1/b-colvis-2.2.1/b-html5-2.2.1/datatables.min.css" />
+  <script type="text/javascript"
+    src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.3/b-2.2.1/b-colvis-2.2.1/b-html5-2.2.1/datatables.min.js"></script>
 </head>
 
 <body>
+
   <div class="container">
-    <h1>{{ title }}</h1>
-    <p style="color:gray; font-size: medium">{{ subtitle }}</p>
-    <hr>
+
+    {% include "nav.html" %}
+
+    {% block title %}{% endblock %}
+
     {% block content %}{% endblock %}
   </div>
 
-  <div class="container">
-    <p>
-      <br><br>
-      The German "Paul Ehrlich Institut" (German Federal Institue for Vaccines and Biomedicines) tests the sensitivity
-      of Corona Antigen tests and published them.
-      Unfortunately, the data is only available as .pdf which is inconvenient for a quick lookup or comparison.
-      This website takes the same data and makes it available in a way more convenient way.
-      You can quickly search by Manufacturer or Test Name and also sort by specific columns.
-      The original data is taken from
-      <a
-        href="https://www.pei.de/SharedDocs/Downloads/DE/newsroom/dossiers/evaluierung-sensitivitaet-sars-cov-2-antigentests.pdf">
-        here
-      </a>. The code and data for this is open source and available on <a
-        href="https://github.com/mc51/Corona-Test-Comparison">GitHub</a>.
+  {% include "footer.html" %}
 
-    </p>
-  </div>
-  <br>
-  <center>
-    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
-        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed
-    under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0
-      International License</a>.
-    <br><br>
-    <p style="color:grey; font-size: small">Site version: {{ version }}</p>
-  </center>
-  <br>
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript"
-    src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.3/b-2.2.1/b-colvis-2.2.1/b-html5-2.2.1/datatables.min.js"></script>
   {% block scripts %}{% endblock %}
 </body>
 

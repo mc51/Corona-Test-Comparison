@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+<br>
+<h2>Why this site?</h2>
+<hr>
+{% endblock %}
+
+{% block content %}
+<p>
+  Testing is important for Corona Virus mitigation and Test-Kits are widely available.
+  However, there are stark differences in their quality: Some tests are really bad at detecting the Virus.
+  This is partly because market approval is currently lax in order to meet the enormous demand.
+  Consequently, customers need to make sure that they buy quality products. <b>To do so, they need to be informed.</b>
+  That's why I've created this website.
+</p>
+<p>
+  The data used is official and stems from the German <a href="https://www.pei.de/">"Paul Ehrlich Institut"</a>
+  (German
+  Federal Institue for Vaccines and Biomedicines). They scientifically examine the sensitivity of Corona Antigen Tests
+  and publish the results. Unfortunately, the data is hard to find and only available in pdf format.
+  This makes it troublesome to stay informed as a customer and make the right decision.
+</p>
+<p>
+  This website tries to solve this:<br>
+  It takes the same trustworthy data and makes it available in a convenient way.<br>
+  Hence, simplyfing finding the right product, making the right decision, and keeping you and the people around you
+  more safe.
+</p>
+<p>
+  The original data is taken from
+  <a
+    href="https://www.pei.de/SharedDocs/Downloads/DE/newsroom/dossiers/evaluierung-sensitivitaet-sars-cov-2-antigentests.pdf">
+    here
+  </a>. The code and data for this website is open source and available on <a
+    href="https://github.com/mc51/Corona-Test-Comparison">GitHub</a>.
+  <br>This website is non-commercial. It doesn't use any cookies or tracking.<br>
+  <br>You can contact the author <a class="mail" href="mailto:me@dontspammeplz.com">here</a>.
+</p>
+
+<script>
+  $('a.mail').on('click', function () {
+    var href = $(this).attr('href');
+    $(this).attr('href', href.replace('me@dontspammeplz.com', '{{ mail }}'));
+  })
+</script>
+
+{% endblock %}

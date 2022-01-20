@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<h2>How to use the comparison?</h2>
+<hr>
+<p>
+  Use the search field to search for Manufacturer or Test name of a specific product.<br>
+  Alternatively, you can sort (click the arrows next to the column name) all products by sensitivity to compare the top
+  products.<br>
+  Look for highest values in total sensitivity. Roughly, this corresponds to the most precise tests.
+</p>
+
+<br>
+<h2>What does sensitivity, viral load and Cq mean?</h2>
+<hr>
+<p>
+  The sensitivity ranges from 0 - 100%. Higher values are better.
+  <br>The viral load corresponds to the amount of virus in a sample.
+  The unit of measurement is Cq. Lower values of Cq mean higher amounts of virus!
+  <br>Put simply, Cq lower than 25 is a very high load, 25-30 a high load and greater than 30 a low load.
+<p>Example:<br>
+  A sensitivity of 60% for Cq 25-30 means that for a high virus load the test will correctly identify 60% of all
+  positive samples as positive.
+</p>
+<br>
+<h2>What is the scientific background?</h2>
+<hr>
+<p>
+  To learn about the scientific background of the data, read the <a
+    href="https://www.pei.de/SharedDocs/Downloads/DE/newsroom/dossiers/evaluierung-sensitivitaet-sars-cov-2-antigentests.pdf">
+    original publication
+  </a>.
+  <br>It explains how the testing is conducted and offers more detailed interpretations of the results.
+</p>
+{% endblock %}

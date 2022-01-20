@@ -26,10 +26,10 @@ COL_NAMES = [
     "Manufacturer",
     "Test name",
     "Target antigen",
-    "Cq <= 25",
-    "Cq 25-30",
-    "Cq >= 30",
-    "Total sensitivity",
+    "Very high viral Load",
+    "High viral load",
+    "Low viral load",
+    "Total",
 ]
 
 
