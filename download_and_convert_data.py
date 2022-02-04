@@ -36,7 +36,7 @@ COL_NAMES = [
 URL = (
     "https://www.pei.de/SharedDocs/Downloads/DE/newsroom/dossiers/"
     "evaluierung-sensitivitaet-sars-cov-2-antigentests.pdf"
-    "?__blob=publicationFile&v=71"
+    "?__blob=publicationFile"
 )
 TODAY = str(datetime.now().date())
 
