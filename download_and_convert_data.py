@@ -49,11 +49,11 @@ with open(dest, "wb") as file:
 log.info(f"Downloaded to {dest}")
 
 
-def extract_created_date(reader):
+def extract_created_date(reader) -> str:
     # Get rid of `D:` prefix and timezone.
     stamp = reader.documentInfo["/CreationDate"]
-    match = re.search("\d+", stamp)
-    return datetime.strptime(match.group(), "%Y%m%d%H%M%S")
+    m = re.search("\d+", stamp)
+    return datetime.strptime(m.group(), "%Y%m%d%H%M%S").strftime("%Y%m%d_%H%M%S")
 
 
 # Split pdf to single pages so we can read them one by one
