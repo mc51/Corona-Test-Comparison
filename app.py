@@ -41,7 +41,8 @@ except IndexError:
     sys.exit(1)
 df = pd.read_csv(file)
 
-DATE = dateparser.parse(Path(file).name[0:10]).date()
+log.debug(f"File date to parse: {Path(file).name[0:8]}")
+DATE = dateparser.parse(Path(file).name[0:8], ["%Y%m%d"]).date()
 TITLE = "Corona Antigen Test Comparison"
 SUBTITLE = f"Data last updated on: {DATE}" if DATE else ""
 
