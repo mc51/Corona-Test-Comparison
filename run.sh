@@ -1,2 +1,2 @@
 #!/bin/bash
-.venv/bin/gunicorn wsgi:app -w 2 -b localhost:4444
+exec .venv/bin/gunicorn wsgi:app -w 2 -b localhost:4444
