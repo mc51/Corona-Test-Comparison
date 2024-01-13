@@ -1,0 +1,34 @@
+[project]
+name = "corona-test-comparison"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "MC51", email = "mc51@users.noreply.github.com" }
+]
+dependencies = [
+    "Flask==2.0.2",
+    "PyPDF2==1.26.0",
+    "camelot-py==0.10.1",
+    "dateparser==1.1.0",
+    "ghostscript==0.7",
+    "opencv-python-headless==4.5.5.62",
+    "pandas==1.3.5",
+    "requests==2.27.1",
+    "gunicorn==21.2.0",
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/corona_test_comparison"]
