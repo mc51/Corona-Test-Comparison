@@ -2,7 +2,7 @@
 *.csv
 !/data/raw/2022-01-18_input.pdf
 **/.ipynb_checkpoints/**
-
+tmp/
 # Editors
 .vscode/
 .idea/
